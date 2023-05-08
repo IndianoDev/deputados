@@ -1,22 +1,19 @@
 import React from 'react'
-import Pagina from '../components/Pagina'
+import Pagina from '../../components/Pagina'
 import { Card, Col, Row } from 'react-bootstrap'
-import apiDeputados from '../services/apiDeputados'
-import Link from 'next/link'
 
-const index = (props) => {
+const Deputados = (props) => {
   return (
-    <Pagina titulo="Filmes Populares">
+    <Pagina titulo="dispesas">
 
             <Row md={4}>
                 {props.Deputados.map(item => (
                     <Col>
                         <Card>
-                            <Card.Img variant="top" src={item.urlFoto} />
+                            <Card.Img variant="top" src={urlFotos} />
                             <Card.Body>
-                            
-                                <Card.Title>{item.nome}</Card.Title>
-                        <Link className='btn btn-danger' href={'/deputados/' + item.id}>consultar</Link>
+                                <Card.Title>{item.title}</Card.Title>
+                                <Link className='btn btn-danger' href={'/deputados/' + item.id}>Detalhes</Link>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -27,7 +24,9 @@ const index = (props) => {
     )
 }
 
-export default index
+
+
+export default Deputados
 
 export async function getServerSideProps(context) {
 
